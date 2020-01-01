@@ -1,0 +1,82 @@
+Representing a Quoridor Board
+-------------------------------------
+
++---+---+---+---+---+---+---+---+---+
+|   |   |   |   | W |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  0
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  1
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  2
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  3
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  4
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  5
+|   |   |   |   |   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+  6
+|   |   |   |   |   |   |   |   |   |  
++---+---+---+---+---+---+---+---+---+  7
+|   |   |   |   | B |   |   |   |   |
++---+---+---+---+---+---+---+---+---+
+
+    0   1   2   3   4   5   6   7
+
+Need: wall placement info, piece placement info,
+      and number of walls remaining for each player
+      
+To represent the walls, have an 8x8 array for the
+points where the edges cross. Store 0 for no wall, or *horizontal*/*vertical*
+for a wall in the given direction
+
+To represent the player positions, just store an x and y for each?
+
+Just store ints for number of walls left for each
+
+
+A wall is good if:
+  -It is directly between the opponent and their goal but NOT between the
+    player and their goal
+  -It is near other walls (how close? which direction?)
+  
+A wall is ok if:
+  -It is between the player and their goal, but NOT directly in front of them
+  
+
+
+DEPTH 2 WITH NOT TRANSPOSITION TABLES
+
+COMPUTE-MOVE (cutoff=2)
+     ROOT NODE ALPHA: 399999
+     NUM-MOVES-DONE 53, NUM-MOVES-PRUNED: 0
+     BEST-MOVE: (0 0)
+     BLACK SHORTEST PATH: 0
+     WHITE SHORTEST PATH: 0
+
++---+---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   O W |
++---+---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   O   |
++---+---+---+---+ O + O + O + O +---+
+|   |   |   |   O   O   |   |   |   |
++---+---+---+---+---+---+---+---+---+
+|   |   |   |   O   O   |   |   |   |
++---+---+---+---+---+---+---+ O + O +
+|   |   |   |   O   |   O   | B |   |
++---+---+---+---+---+---+---+---+---+
+|   |   |   |   O   |   O   |   |   |
++---+---+ O + O +---+ O + O +---+---+
+|   |   |   O   |   |   O   |   |   |
++---+---+---+ O + O +---+---+---+---+
+|   |   |   O   O   |   O   |   |   |
++---+---+ O + O + O + O + O + O +---+
+|   |   |   |   O   |   |   |   |   |
++---+---+---+---+---+---+---+---+---+
+Black walls left: 3, White walls left: 0
+BLACK's turn!
+
+
+Time: 22080
+WHITE won!!!!
+T
